@@ -8,7 +8,7 @@
 
 ## 📌 Introduction
 
-**LED** proposes a novel **Self-Supervised Learning–Estimation–Decision (LED)** framework for robust cell tracking in time-lapse microscopy sequences.  
+a novel **Self-Supervised Learning–Estimation–Decision (LED)** framework for robust cell tracking in time-lapse microscopy sequences.  
 
 The framework integrates:
 
@@ -17,6 +17,8 @@ The framework integrates:
 - **Decision**: global optimization to resolve cell associations, divisions, and disappearances  
 
 These designs enable stable tracking for unseen data under vary imaging conditions, dense cell populations, and vary cell types.
+
+![example_lineage_tracks](example_lineage_tracks.gif)
 
 ---
 
