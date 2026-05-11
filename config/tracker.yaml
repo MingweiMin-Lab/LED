@@ -1,0 +1,45 @@
+### Hydra configuration file for tracking
+
+path: 'D:\Haishan\track\data\CTC_dataset\hela1'
+
+dataloader:
+  division_detect: True                   # whether to pre-detect division for subsequent self-supervised training
+  start_frame: 0
+  num_frame: 200                          
+
+  itv: 1                                  # frame interval 
+  if_crop: False                          # Image will not be cropped
+  tile_num: 25                            # cropped tiles when training
+  pred_tile_num: 4                        # cropped tiles when prediction, only support 1 or 4 tiles
+  overlap: 32                             # overlap of tiles (pixel)
+
+train:
+  epochs: 100                             # Number of epoch
+  batch_size: 2                           # Batch size
+  lr: 0.0001                              # Learning rate of Adam
+
+  train_load: False
+  load: 'CP.pth'                          # pretrained model. If you use a trained model, please rewrite it.
+  val: False
+
+track:
+  max_movenment: 50                       # max_movenment (pixel)  ### 最重要的参数
+
+  load_track: False
+  track_file:   "track_linear_solver.csv"
+  centroid_file: "2025-09-22-centroid.npy"
+
+  method: 'linear_solver'
+  run_num: 3                              # multiple running (threading or processing) ## 线程太多且细胞又多可能会bug
+  last_itv: 20                            # number of files that last thread process
+  division: True                          # whether to add division Constraints
+  post_pro: True                          # whether to post process including pruning and merging tracks
+  min_length: 1                           # leaf tracks shorter than min_length (frame) would be pruned
+  prune_leaf: True
+  merge: True                             # 2 leaf Nodes (cells) in neighboring frames would be merged
+  jitter_thr: 0.6                         # jitter thr
+
+  div_interval: 30                        #后处理时，允许的分裂时间间隔（frame）
+  nearest: False                          #后处理时，落单的细胞（碎片、误分割）直接连最近邻，还是根据大小和距离选择连接
+
+
