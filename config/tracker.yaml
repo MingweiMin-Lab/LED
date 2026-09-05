@@ -1,6 +1,6 @@
 ### Hydra configuration file for tracking
 
-path: 'D:\Haishan\track\data\CTC_dataset\hela1'
+path: ''
 
 dataloader:
   division_detect: True                   # whether to pre-detect division for subsequent self-supervised training
