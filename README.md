@@ -1,8 +1,8 @@
 # Learning–Estimation–Decision LED
 *A Self-Supervised Learning–Estimation–Decision Framework for Robust Cell Tracking*
 
-![Python](https://img.shields.io/badge/python-3.9+-blue)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.0.1-orange)
+![Python](https://img.shields.io/badge/python-3.11+-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.14.0-orange)
 
 ---
 
@@ -25,37 +25,22 @@ These designs enable stable tracking for unseen data under vary imaging conditio
 ---
 
 ## 🧰 Dependencies
-
-### Conda environment (recommended)
-
+**Note:** The code is heavily tested on Windows with NVIDIA GPUs but not Mac/Linux.
+### 1. Conda Environment (Recommended for Windows + NVIDIA GPU)
+Create your environment and activate it:
 ```bash
-conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidia
+conda create -n your_env_name python=3.11
+conda activate your_env_name
 ```
-
-### Pip packages
-
+### 2. PyTorch Installation (Deep Learning & Large-Scale Image Processing)
+Ensure you have a compatible NVIDIA driver. 
 ```bash
-pip install tensorboard
-pip install tqdm
-pip install hydra-core==1.3.2
-pip install omegaconf
-pip install tifffile
-pip install scipy
-pip install pandas
-pip install scikit-image
-pip install opencv-python
-pip install ortools
-pip install imagecodecs
-pip install ete3
-pip install scikit-learn
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 ```
-
-### Optional (GUI visualization)
-
+### 3. Pip packages
 ```bash
-pip install PyQt5
+pip install -r requirements.txt
 ```
-
 ---
 
 ## 📁 Data Preparation
@@ -80,7 +65,7 @@ data/
 
 ## ⚙️ Key Parameters
 
-Important tracking-related parameters are defined in the configuration file (`config/config.yaml`).
+Important tracking-related parameters are defined in the configuration file (`config/tracker.yaml`).
 
 ### Core parameters
 
@@ -102,21 +87,22 @@ Important tracking-related parameters are defined in the configuration file (`co
 ---
 
 ## ▶️ Usage Example
-
-### Run cell tracking
-
+**Note:** verify the data and configurations(`config/tracker.yaml`).
+### run main.py or the simple code below 
 ```
 from train import train_model as tm
 from predictor import predictor as pr
 from cell_tracking import tracker as ct
 
 tm()
-
 pr()
-
 ct()
 ```
-
+### or use jupyter
+Launch jupyter notebook and run demo.ipynb
+```bash
+jupyter notebook
+```
 
 ---
 
