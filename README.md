@@ -25,6 +25,14 @@ These designs enable stable tracking for unseen data under vary imaging conditio
 ---
 
 ## 🧰 Dependencies
+### 0. Clone the Repository:
+```bash
+git clone https://github.com/MingweiMin-Lab/LED.git
+```
+enter the directory
+```bash
+cd LED
+```
 **Note:** The code is heavily tested on Windows with NVIDIA GPUs but not Mac/Linux.
 ### 1. Conda Environment (Recommended for Windows + NVIDIA GPU)
 Create your environment and activate it:
