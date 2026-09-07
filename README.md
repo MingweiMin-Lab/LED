@@ -38,6 +38,8 @@ cd LED
 Create your environment and activate it:
 ```bash
 conda create -n your_env_name python=3.11
+```
+```bash
 conda activate your_env_name
 ```
 ### 2. PyTorch Installation (Deep Learning & Large-Scale Image Processing)
