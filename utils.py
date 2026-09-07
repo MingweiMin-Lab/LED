@@ -39,24 +39,24 @@ def get_cfg(cfg, type='track'):
     cfg = OmegaConf.merge(cfg, extra_config)
     cfg.track.thr_dist = cfg.track.max_movenment
 
-    imgs = join(cfg.path, 'data', 'img')
-    mask = join(cfg.path, 'data', 'mask')
-    cfg.division_mask = join(cfg.path, 'data', 'cndd_division')
-    cfg.flow_dir = join(cfg.path, 'data', 'flow')
-    cfg.cp_dir = join(cfg.path, 'result', 'checkpoint')
-    cfg.result = join(cfg.path, 'result')
+    imgs = abs_path(join(cfg.path, 'data', 'img'))
+    mask = abs_path(join(cfg.path, 'data', 'mask'))
+    cfg.division_mask = abs_path(join(cfg.path, 'data', 'cndd_division'))
+    cfg.flow_dir = abs_path(join(cfg.path, 'data', 'flow'))
+    cfg.cp_dir = abs_path(join(cfg.path, 'result', 'checkpoint'))
+    cfg.result = abs_path(join(cfg.path, 'result'))
 
     path = [cfg.cp_dir, cfg.division_mask, cfg.flow_dir]
     make_dir(path)
 
     #  ## please check your img data
-    cfg.imgs_dir = np.sort(glob(abs_path(join(imgs, '*.tif')))).tolist()
+    cfg.imgs_dir = np.sort(glob(join(imgs, '*.tif'))).tolist()
     cfg.dataloader.start_frame = min(len(cfg.imgs_dir), cfg.dataloader.start_frame)
     cfg.dataloader.num_frame = min(len(cfg.imgs_dir) - cfg.dataloader.start_frame, cfg.dataloader.num_frame)
     cfg.imgs_dir = cfg.imgs_dir[cfg.dataloader.start_frame: cfg.dataloader.start_frame + cfg.dataloader.num_frame]
 
     #  ## please check your mask data
-    cfg.mask_dir = np.sort(glob(abs_path(join(mask, '*.tif')))).tolist()[cfg.dataloader.start_frame:
+    cfg.mask_dir = np.sort(glob(join(mask, '*.tif'))).tolist()[cfg.dataloader.start_frame:
                                    cfg.dataloader.start_frame + cfg.dataloader.num_frame]
 
     if type == 'train':
@@ -67,20 +67,20 @@ def get_cfg(cfg, type='track'):
             for img in cfg.imgs_dir:
                 tifffile.imwrite(img, max_min_morn(tifffile.imread(img)).astype(np.float32))
 
-        cfg.division_mask_dir = np.sort(glob(abs_path(join(cfg.division_mask, '*.tif')))).tolist()[
+        cfg.division_mask_dir = np.sort(glob(join(cfg.division_mask, '*.tif'))).tolist()[
             cfg.dataloader.start_frame:
             cfg.dataloader.start_frame + cfg.dataloader.num_frame]
         #  ## please rewrite to fit your divison mask data
         if cfg.dataloader.division_detect:
             # 删除文件夹cfg.division_mask下的文件
-            for f in glob(join(abs_path(cfg.division_mask), '*.tif')):
+            for f in glob(join(cfg.division_mask, '*.tif')):
                 os.remove(f)
             from division_detector import main
             main(cfg.imgs_dir, cfg.mask_dir, cfg.division_mask, max_dt=cfg.track.max_movenment, dettype='seg')
-            cfg.division_mask_dir = np.sort(glob(abs_path(join(cfg.division_mask, '*.tif')))).tolist()
+            cfg.division_mask_dir = np.sort(glob(join(cfg.division_mask, '*.tif'))).tolist()
 
     if type == 'track':
-        cfg.flow_dir = np.sort(glob(join(abs_path(cfg.flow_dir), '*.tif'))).tolist()[
+        cfg.flow_dir = np.sort(glob(join(cfg.flow_dir, '*.tif'))).tolist()[
                 cfg.dataloader.start_frame:
                 cfg.dataloader.start_frame + cfg.dataloader.num_frame-1]
         # cfg.shape = tifffile.imread(cfg.flow_dir[0]).shape[1:]
@@ -90,7 +90,7 @@ def get_cfg(cfg, type='track'):
 
     if type == 'predict':
         cfg.load = str(np.sort(glob(join(cfg.cp_dir, '*.pth')))[-1])
-        [os.remove(f) for f in glob(join(abs_path(cfg.flow_dir), '*.tif'))]
+        [os.remove(f) for f in glob(join(cfg.flow_dir), '*.tif')]
 
     return cfg
 

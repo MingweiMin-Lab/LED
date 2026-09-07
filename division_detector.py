@@ -343,7 +343,7 @@ def main(imgs_dir,
             division_mask = Div_det.division_match()
 
         # print(idx, 'frame done!', division_mask.max())
-        tifffile.imwrite(save_path + r'\division' + str(idx).zfill(4) + '.tif', division_mask)
+        tifffile.imwrite(os.path.join(save_path, 'division' + str(idx).zfill(4) + '.tif'), division_mask)
 
 
 if __name__ == '__main__':
