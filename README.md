@@ -125,7 +125,7 @@ After execution, results will be saved as:
 results/
 ├── track.csv                           # Cell trajectory matrix: frame × cell
 ├── CTC format result                   # Cell Tracking Challenge format 
-└── visualization of lieange tree       # Track overlay images
+└── visualization of lieange tree       # Lieange tree
 ```
 
 ---
