@@ -1,7 +1,7 @@
 # Learning–Estimation–Decision LED
 *A Self-Supervised Learning–Estimation–Decision Framework for Robust Cell Tracking*
 
-![Python](https://img.shields.io/badge/python-3.11+-blue)
+![Python](https://img.shields.io/badge/python-3.11-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.14.0-orange)
 
 ---
@@ -125,7 +125,7 @@ After execution, results will be saved as:
 results/
 ├── track.csv                           # Cell trajectory matrix: frame × cell
 ├── CTC format result                   # Cell Tracking Challenge format 
-└── visualization of lieange tree       # Lieange tree
+└── visualization of lineage tree       # Lineage tree
 ```
 
 ---
