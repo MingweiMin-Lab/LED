@@ -3,6 +3,7 @@ import numpy as np
 import sys
 from skimage.feature import peak_local_max
 from scipy.optimize import linear_sum_assignment
+import os
 
 
 class Cell:
