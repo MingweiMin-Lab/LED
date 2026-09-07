@@ -35,7 +35,7 @@ def train_net(net,
 
     epochs = cfg.train.epochs
     batch_size = cfg.train.batch_size
-    train_loader = DataLoader(train, batch_size=batch_size, shuffle=True, num_workers=8, pin_memory=False)
+    train_loader = DataLoader(train, batch_size=batch_size, shuffle=True, num_workers=0, pin_memory=False)
 
     writer = SummaryWriter(log_dir=abs_path('./logs'), flush_secs=120, comment=f'LR_{cfg.train.lr}_BS_{batch_size}')
     global_step = 0

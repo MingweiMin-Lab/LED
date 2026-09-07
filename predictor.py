@@ -128,7 +128,7 @@ def predictor(cfg: DictConfig):
     # cfg.dataloader.if_crop = False
     # cfg.dataloader.tile_num = 1
     dataset = Train_Dataset(cfg)
-    loader = DataLoader(dataset, batch_size=1, shuffle=False, num_workers=8, pin_memory=True)
+    loader = DataLoader(dataset, batch_size=1, shuffle=False, num_workers=0, pin_memory=True)
 
     try:
         pred_net(net=net,
