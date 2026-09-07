@@ -4,7 +4,7 @@ if __name__ == '__main__':
     from predictor import predictor as pr
     from cell_tracking import tracker as ct
     import datetime
-    import os.path.join as join
+    from os.path import join
     from hydra.utils import to_absolute_path as abs_path
 
     now = datetime.datetime.now()
