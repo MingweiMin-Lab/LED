@@ -626,7 +626,7 @@ def cell_tracker(cfg,
     #
     # else:
     #     raise ValueError("unsupported method")
-    np.save(join(cfg.result, now.strftime('%Y-%m-%d-') + 'centroid.npy'), np.array(centroid, dtype=object))
+    np.save(join(cfg.result, 'centroid.npy'), np.array(centroid, dtype=object))
     track = get_lineage(cfg, track_match, num_cell_f)
 
     return track, centroid
@@ -639,7 +639,7 @@ def convert2id(cfg, track, centroid):
             if track[ith, jth] != -1:
                 track_copy[ith, jth] = int(centroid[jth][track[ith, jth], 0, 2])
     df = pd.DataFrame(data=track_copy.T, columns=None)
-    df.to_csv(join(cfg.result, now.strftime("%Y-%m-%d") + 'track_id.csv'), index=False)
+    df.to_csv(join(cfg.result, 'track_id.csv'), index=False)
 
 
 @hydra.main(config_path=abs_path('config'), version_base='1.3', config_name='tracker')
@@ -675,8 +675,7 @@ def tracker(cfg: DictConfig):
     if num_f > 15 and cfg.track.post_pro:
         track = merging_and_pruning(cfg, track.T, centroid)
     df = pd.DataFrame(data=track, columns=None)
-    df.to_csv(join(cfg.result, now.strftime("%Y-%m-%d") +
-                   'track_results.csv'), index=False)
+    df.to_csv(join(cfg.result, 'track_results.csv'), index=False)
     convert2id(cfg, track.T, centroid)
 
     print(now.strftime("%Y-%m-%d %H:%M:%S") + f'{num_f}-frame time cost:', int(time.time() - start), 's')

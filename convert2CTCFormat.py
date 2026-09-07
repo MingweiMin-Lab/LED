@@ -121,7 +121,7 @@ def save_as_gif(save_dir):
         loop=0  # 循环次数，0 为无限循环
     )
 
-    print(f"GIF 已保存为：{output_gif}")
+    print(f"{output_gif} saved!")
 
 
 if __name__ == "__main__":
