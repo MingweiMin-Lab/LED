@@ -71,12 +71,13 @@ def get_cfg(cfg, type='track'):
             cfg.dataloader.start_frame:
             cfg.dataloader.start_frame + cfg.dataloader.num_frame]
         #  ## please rewrite to fit your divison mask data
-        if len(cfg.division_mask_dir) != len(cfg.imgs_dir) - 1 and cfg.dataloader.division_detect:
+        if cfg.dataloader.division_detect:
+            # 删除文件夹cfg.division_mask下的文件
+            for f in glob(join(abs_path(cfg.division_mask), '*.tif')):
+                os.remove(f)
             from division_detector import main
             main(cfg.imgs_dir, cfg.mask_dir, cfg.division_mask, max_dt=cfg.track.max_movenment, dettype='seg')
-            cfg.division_mask_dir = np.sort(glob(abs_path(join(cfg.division_mask, '*.tif')))).tolist()[
-                cfg.dataloader.start_frame:
-                cfg.dataloader.start_frame + cfg.dataloader.num_frame]
+            cfg.division_mask_dir = np.sort(glob(abs_path(join(cfg.division_mask, '*.tif')))).tolist()
 
     if type == 'track':
         cfg.flow_dir = np.sort(glob(join(abs_path(cfg.flow_dir), '*.tif'))).tolist()[
