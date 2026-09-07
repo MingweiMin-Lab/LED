@@ -30,7 +30,7 @@ track:
   centroid_file: "2025-09-22-centroid.npy"
 
   method: 'linear_solver'
-  run_num: 3                              # multiple running (threading or processing) ## 线程太多且细胞又多可能会bug
+  run_num: 1                              # multiple running (threading or processing) ## 线程太多且细胞又多可能会bug
   last_itv: 20                            # number of files that last thread process
   division: True                          # whether to add division Constraints
   post_pro: True                          # whether to post process including pruning and merging tracks

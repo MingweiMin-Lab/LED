@@ -33,12 +33,13 @@ enter the directory
 ```bash
 cd LED
 ```
-**Note:** The code is heavily tested on Windows with NVIDIA GPUs but not Mac/Linux.
+**Note:** The code was tested on Windows/Linux with NVIDIA GPUs but not Mac.
 ### 1. Conda Environment (Recommended for Windows + NVIDIA GPU)
-Create your environment and activate it:
+Create your environment:
 ```bash
 conda create -n your_env_name python=3.11
 ```
+and then activate it:
 ```bash
 conda activate your_env_name
 ```
@@ -47,7 +48,7 @@ Ensure you have a compatible NVIDIA driver.
 ```bash
 pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 ```
-### 3. Pip packages
+### 3. Pip Packages
 ```bash
 pip install -r requirements.txt
 ```
@@ -97,8 +98,8 @@ Important tracking-related parameters are defined in the configuration file (`co
 ---
 
 ## ▶️ Usage Example
-**Note:** verify the data and configurations(`config/tracker.yaml`).
-### run main.py or the simple code below 
+**Note:** verify your data and configurations (`config/tracker.yaml`).
+### run main.py `python main.py` or the simple code below 
 ```
 from train import train_model as tm
 from predictor import predictor as pr

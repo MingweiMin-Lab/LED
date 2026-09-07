@@ -90,7 +90,7 @@ def get_cfg(cfg, type='track'):
 
     if type == 'predict':
         cfg.load = str(np.sort(glob(join(cfg.cp_dir, '*.pth')))[-1])
-        [os.remove(f) for f in glob(join(cfg.flow_dir), '*.tif')]
+        [os.remove(f) for f in glob(join(cfg.flow_dir, '*.tif'))]
 
     return cfg
 
