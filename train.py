@@ -97,14 +97,14 @@ def train_model(cfg: DictConfig):
 
     net = UNet(n_channels=3, n_classes=2, bilinear=True)
 
-    # 检查可用的GPU数量
-    if torch.cuda.device_count() > 1:
-        print(f"Using device: {torch.cuda.device_count()} GPUs")
-        # 使用所有GPU
-        net = nn.DataParallel(net).cuda()
-    else:
-        net.to(device=device)
-
+    # # 检查可用的GPU数量
+    # if torch.cuda.device_count() > 1:
+    #     print(f"Using device: {torch.cuda.device_count()} GPUs")
+    #     # 使用所有GPU
+    #     net = nn.DataParallel(net).to(device=device)
+    # else:
+    #     net.to(device=device)
+    net.to(device=device)
     if cfg.train.train_load:
         net.load_state_dict(
             torch.load(cfg.train.load, map_location=device)

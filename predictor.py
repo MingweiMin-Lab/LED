@@ -110,7 +110,14 @@ def predictor(cfg: DictConfig):
     net = UNet(n_channels=3, n_classes=2, bilinear=True)
 
     net.to(device=device)
-    # net = nn.DataParallel(net).cuda()
+    # net = nn.DataParallel(net).to(device=device)
+    # # 检查可用的GPU数量
+    # if torch.cuda.device_count() > 1:
+    #     print(f"Using device: {torch.cuda.device_count()} GPUs")
+    #     # 使用所有GPU
+    #     net = nn.DataParallel(net).to(device=device)
+    # else:
+    #     net.to(device=device)
 
     net.load_state_dict(
         torch.load(cfg.load, map_location=device)
