@@ -42,20 +42,7 @@ Ensure you have a compatible NVIDIA driver.
 pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 ```
 ### 3. Pip Packages
-**Note:** The code was tested on Windows/Linux with NVIDIA GPUs but not Mac.
-#### Clone the Repository:
-```bash
-git clone https://github.com/MingweiMin-Lab/LED.git
-```
-enter the directory
-```bash
-cd LED
-```
-You can install all dependencies using:
-```bash
-pip install -r requirements.txt
-```
-Or, you can install the package directly from PyPI:
+Install the package directly from PyPI:
 ```bash
 pip install ledtrack
 ```
@@ -106,6 +93,16 @@ Important tracking-related parameters are defined in the configuration file (`co
 
 ## ▶️ Usage Example
 **Note:** verify your data and configurations (`config/tracker.yaml`).
+
+**Note:** The code was tested on Windows/Linux with NVIDIA GPUs but not Mac.
+#### Clone the Repository:
+```bash
+git clone https://github.com/MingweiMin-Lab/LED.git
+```
+enter the directory
+```bash
+cd LED
+```
 ### run main.py `python ledtrack` or the simple code below 
 ```
 from ledtrack.train import train_model as tm
