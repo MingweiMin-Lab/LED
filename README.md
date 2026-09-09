@@ -25,16 +25,9 @@ These designs enable stable tracking for unseen data under vary imaging conditio
 ---
 
 ## 🧰 Dependencies
-### 0. Clone the Repository:
-```bash
-git clone https://github.com/MingweiMin-Lab/LED.git
-```
-enter the directory
-```bash
-cd LED
-```
-**Note:** The code was tested on Windows/Linux with NVIDIA GPUs but not Mac.
 ### 1. Conda Environment (Recommended for Windows + NVIDIA GPU)
+Download and install Conda for managing Python environments from [Anaconda](https://www.anaconda.com/products/distribution).
+
 Create your environment:
 ```bash
 conda create -n your_env_name python=3.11
@@ -49,8 +42,22 @@ Ensure you have a compatible NVIDIA driver.
 pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 ```
 ### 3. Pip Packages
+**Note:** The code was tested on Windows/Linux with NVIDIA GPUs but not Mac.
+#### Clone the Repository:
+```bash
+git clone https://github.com/MingweiMin-Lab/LED.git
+```
+enter the directory
+```bash
+cd LED
+```
+You can install all dependencies using:
 ```bash
 pip install -r requirements.txt
+```
+Or, you can install the package directly from PyPI:
+```bash
+pip install ledtrack
 ```
 ---
 
@@ -99,11 +106,11 @@ Important tracking-related parameters are defined in the configuration file (`co
 
 ## ▶️ Usage Example
 **Note:** verify your data and configurations (`config/tracker.yaml`).
-### run main.py `python main.py` or the simple code below 
+### run main.py `python ledtrack` or the simple code below 
 ```
-from train import train_model as tm
-from predictor import predictor as pr
-from cell_tracking import tracker as ct
+from ledtrack.train import train_model as tm
+from ledtrack.predictor import predictor as pr
+from ledtrack.cell_tracking import tracker as ct
 
 tm()
 pr()
