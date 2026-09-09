@@ -103,7 +103,7 @@ enter the directory
 ```bash
 cd LED
 ```
-### run main.py `python ledtrack` or the simple code below 
+### run `ledtrack` or the simple code below 
 ```
 from ledtrack.train import train_model as tm
 from ledtrack.predictor import predictor as pr
