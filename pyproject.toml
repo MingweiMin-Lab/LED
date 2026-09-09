@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ledtrack"
-version = "0.1.10"
+version = "0.1.11"
 description = "Learning-Estimation-Decision Cell Tracking"
 readme = "README.md"
 license = {text = "MIT"}
@@ -23,6 +23,8 @@ dependencies = [
     "ete3==3.1.3",
     "scikit-learn==1.7.2",
     "PyQt5==5.15.11",
+    "jupyter",
+    "matplotlib",
 ]
 
 [project.scripts]
